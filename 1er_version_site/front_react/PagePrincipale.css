@@ -1,0 +1,28 @@
+.img_container{
+	width: 120px;
+	height: 120px;
+	margin: 5px 0 30px 0;
+	border: 5px solid #008611;
+	border-radius: 50%;
+	box-shadow: 0 -4px 0 #2BF700;
+}
+.lesquatres{
+	border:solid;
+	border-color: red;
+	overflow: auto;
+}
+.details{
+	border:solid;
+	border-color: yellow;
+	width: 16.40%;
+	display:inline-block;
+	vertical-align: top;
+}
+
+.zone_commentaire{
+	width: 60%;
+	height: 950px;
+	border:solid;
+	display:inline-block;
+	vertical-align: top;
+}

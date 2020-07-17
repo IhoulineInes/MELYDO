@@ -245,8 +245,10 @@ def add_ecoute():
 def propositions():
     idd = int(session.get('id'))
     liste_path =[]
-    song = reco_data.liste_musique(idd)
-    #song = reco_data.proposition(idd)
+    if(lien_bd.nb_ecoute(idd)<15):
+        song = reco_data.liste_musique(idd)
+    else:
+        song = reco_data.proposition(idd)
     for i in song:
         liste_path.append(lien_bd.getPath(i))
     return render_template('proposition.html', musiques=liste_path)

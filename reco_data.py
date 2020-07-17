@@ -62,7 +62,7 @@ def liste_musique(id):
 	user_reco = list_user(id)
 	print(user_reco)
 	return user_reco
-liste_musique(34)
+#liste_musique(34)
 
 
 def note_user_song(s):
@@ -71,17 +71,16 @@ def note_user_song(s):
         note = 10
     return note
 
-'''
+
 def proposition(id):
 	all_user_songs = lien_bd.all_user_songs(id)
 	print(all_user_songs)
 
 	user_songs = lien_bd.users_songs(id)
-
+	print(user_songs)
 	user_songs_ids = list(user_songs['id_musique'])
-	print(">>")
-	print(user_songs_ids)
 
+	return True
 	users_scores = {}
 
 
@@ -120,8 +119,6 @@ def proposition(id):
 	frequent_songs={}
 	for u in users_scores:
 		score_user = u[1]
-		print("dic")
-		print(users_songs[u[0]])
 		for id_music in users_songs[u[0]]:
 			print(id_music)
 			if (id_music not in user_songs_ids):
@@ -130,14 +127,13 @@ def proposition(id):
 				else:
 					frequent_songs[id_music] = score_user
 
-	print(frequent_songs)
 	frequent_songs = {k: v for k, v in sorted(frequent_songs.items(), key=lambda item: item[1], reverse=True)}
 	user_based_reco = list(frequent_songs.keys())[:20]
 	print (user_based_reco)
 	return (user_based_reco)
 
 proposition(5001)
-'''
+
 '''
 
 	for u in all_user_songs['id_user']:
@@ -172,5 +168,5 @@ proposition(5001)
 	return (user_based_reco)
 '''
 
-#print(proposition(224))
+print(proposition(224))
 

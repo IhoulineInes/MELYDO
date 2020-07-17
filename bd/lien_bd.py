@@ -88,6 +88,14 @@ def add_like(idd, id_musique):
     except Exception as e :
         return "KO"
 
+def getNbLike():
+    print("getNbLike")
+    connexion = create_session()
+    requete = "Select id_user, nb_ecoute FROM ecoutes "
+    print(requete)
+    nb_like = pd.read_sql(requete, con=connexion, index_col=None)
+    print(nb_like)
+    return ()
 #--------------------------MUSIQUE----------------------
 def getPath(titre):
     connexion = create_session()
@@ -152,11 +160,21 @@ def musique_by_id(id_musique):
 def get_nb_ecoute(idd,id_musique):
     print("get_nb_ecoute")
     connexion = create_session()
-    requete = "Select nb_ecoute FROM ecoutes where `id_musique`=%s and `id_user`=%s "%(id_musique,idd)
+    requete = "Select nb_ecoute FROM ecoutes where `id_musique`=%s and `id_user` =%s "%(id_musique,idd)
     print(requete)
     nb_ecoute = pd.read_sql(requete,con=connexion, index_col=None)
     print(nb_ecoute)
     return (int(nb_ecoute['nb_ecoute'][0]))
+
+def nb_ecoute(idd):
+    print("get_nb_ecoute")
+    connexion = create_session()
+    requete = "Select nb_ecoute FROM ecoutes where id_user=%s " % idd
+    print(requete)
+    nb_ecoute = pd.read_sql(requete, con=connexion, index_col=None)
+    print(nb_ecoute)
+    return (int(nb_ecoute['nb_ecoute'][0]))
+
 
 def ecouteExist(path,idd):
     print("ecouteExist")
@@ -228,6 +246,14 @@ def add_dow(idd, id_musique):
     except Exception as e :
         return "KO"
 
+def getNbDw():
+    print("getNbLike")
+    connexion = create_session()
+    requete = "Select id_user, nb_ecoute FROM downloads "
+    print(requete)
+    nb_like = pd.read_sql(requete, con=connexion, index_col=None)
+    print(nb_like)
+    return ()
 
 #--------------------------------PROPOSITION--------------------------------------------
 

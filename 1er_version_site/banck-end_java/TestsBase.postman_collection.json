@@ -1,0 +1,460 @@
+{
+	"info": {
+		"_postman_id": "a7906017-8af3-4237-b93a-0d36fa1af5ae",
+		"name": "TestsBase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/Birdy/CreateUser?nom=Mickael&prenom=Dikaev&log=Vaynax&mdp=1234&mail=aslam888",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/CreateUser?nom=Mickael&prenom=Dikaev&log=Vaynax&mdp=1234&mail=aslam888",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"CreateUser"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Mickael"
+						},
+						{
+							"key": "prenom",
+							"value": "Dikaev"
+						},
+						{
+							"key": "log",
+							"value": "Vaynax"
+						},
+						{
+							"key": "mdp",
+							"value": "1234"
+						},
+						{
+							"key": "mail",
+							"value": "aslam888"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/Login?log=Vaynax&mdp=1234",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/Login?log=Vaynax&mdp=1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"Login"
+					],
+					"query": [
+						{
+							"key": "log",
+							"value": "Vaynax"
+						},
+						{
+							"key": "mdp",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/LogOut?cle=8dHSEEs3ZyMl0ahFENrK1qtjvI",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/LogOut?cle=8dHSEEs3ZyMl0ahFENrK1qtjvI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"LogOut"
+					],
+					"query": [
+						{
+							"key": "cle",
+							"value": "8dHSEEs3ZyMl0ahFENrK1qtjvI"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/DeleteUser?log=Vaynax&mdp=1234&cle=CiAnM0FxTpYp3Aq33z4ncTwiEz5zjOTyW",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/DeleteUser?log=Vaynax&mdp=1234&cle=CiAnM0FxTpYp3Aq33z4ncTwiEz5zjOTyW",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"DeleteUser"
+					],
+					"query": [
+						{
+							"key": "log",
+							"value": "Vaynax"
+						},
+						{
+							"key": "mdp",
+							"value": "1234"
+						},
+						{
+							"key": "cle",
+							"value": "CiAnM0FxTpYp3Aq33z4ncTwiEz5zjOTyW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/AjouterAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22&login=psih",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/AjouterAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22&login=dance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"AjouterAmis"
+					],
+					"query": [
+						{
+							"key": "cle",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "login",
+							"value": "dance"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/SuprimerAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22&login=psih",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/SuprimerAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22&login=psih",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"SuprimerAmis"
+					],
+					"query": [
+						{
+							"key": "cle",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "login",
+							"value": "psih"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/ListAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/ListAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"ListAmis"
+					],
+					"query": [
+						{
+							"key": "cle",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/ListMessageRecent?jours=4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/ListMessageRecent?jours=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"ListMessageRecent"
+					],
+					"query": [
+						{
+							"key": "jours",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/ListCommPersonne?key=GzoqRW03XETLnkMjsnav2UVoB22&login=Namide",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/ListCommPersonne?key=GzoqRW03XETLnkMjsnav2UVoB22&login=Namide",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"ListCommPersonne"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "login",
+							"value": "Namide"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/Like?key=GzoqRW03XETLnkMjsnav2UVoB22&id_com=5e8c77f6b82aec6e9e500b14",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/Like?key=GzoqRW03XETLnkMjsnav2UVoB22&id_com=5e8c77f6b82aec6e9e500b14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"Like"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "id_com",
+							"value": "5e8c77f6b82aec6e9e500b14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/PosterCommentaire?key=GzoqRW03XETLnkMjsnav2UVoB22&text=un mensonge repeté 10 fois reste un mensonge,un mensonge repete 10 000 fois devient une realité",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/PosterCommentaire?key=GzoqRW03XETLnkMjsnav2UVoB22&text=un mensonge repeté 10 fois reste un mensonge,un mensonge repete 10 000 fois devient une realité,citation:hitler",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"PosterCommentaire"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "text",
+							"value": "un mensonge repeté 10 fois reste un mensonge,un mensonge repete 10 000 fois devient une realité,citation:hitler"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/ListeReponseCommentaire?id=5e8c799f30ff821c5cc12da7",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/ListeReponseCommentaire?id=5e8c799f30ff821c5cc12da7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"ListeReponseCommentaire"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5e8c799f30ff821c5cc12da7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/RepondreCommentaire?key=GzoqRW03XETLnkMjsnav2UVoB22&to=5e9886000b8464254496a675&comm=deux poids deux mesures",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/RepondreCommentaire?key=GzoqRW03XETLnkMjsnav2UVoB22&to=5e9886000b8464254496a675&comm=deux poids deux mesures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"RepondreCommentaire"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "to",
+							"value": "5e9886000b8464254496a675"
+						},
+						{
+							"key": "comm",
+							"value": "deux poids deux mesures"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/EnleverLike?key=GzoqRW03XETLnkMjsnav2UVoB22&id_com=5e8c77f6b82aec6e9e500b14",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/EnleverLike?key=GzoqRW03XETLnkMjsnav2UVoB22&id_com=5e8c77f6b82aec6e9e500b14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"EnleverLike"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						},
+						{
+							"key": "id_com",
+							"value": "5e8c77f6b82aec6e9e500b14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/Birdy/ListComAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Birdy/ListComAmis?cle=GzoqRW03XETLnkMjsnav2UVoB22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Birdy",
+						"ListComAmis"
+					],
+					"query": [
+						{
+							"key": "cle",
+							"value": "GzoqRW03XETLnkMjsnav2UVoB22"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

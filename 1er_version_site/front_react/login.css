@@ -1,0 +1,68 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	background: url(fond.jpg);
+	height: 100%;
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+
+}
+
+
+h1{
+	color: white;
+}
+
+.connexion{
+	margin: 0 auto;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 10%;
+}
+
+.modal-content{
+	background-color: #808080;
+	opacity: .95;
+	padding: 0 18px;
+	box-shadow: 0px 0px 5px #848484;
+}
+
+.logo-img-login{
+	margin-top: -50px;
+	margin-bottom: 15px;
+	margin-left: 37%;
+}
+
+.logo-img-login img{
+	width: 80px;
+	height: 80px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 2px #848484;
+}
+
+.form-group{
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.form-group input{
+	height: 42px;
+	border-radius: 10px;
+}
+
+.valide{
+	width: 40%;
+	margin: 5px 0 25px;
+	background-color: #778899;
+	border-radius: 5px;
+	color: white;
+	padding: 7px 14px;
+}
+
+.liens{
+	padding: 5px 0 25px;
+}
+
+.liens a{
+	color: white;
+}

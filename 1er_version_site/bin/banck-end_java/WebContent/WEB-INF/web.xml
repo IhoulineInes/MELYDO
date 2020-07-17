@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee">
+
+	 <display-name>melydo</display-name>
+	<servlet> 
+		<servlet-name>Test</servlet-name> 
+		<servlet-class>Hello</servlet-class> 
+	</servlet>
+	<servlet>
+        <servlet-name>CreateUser</servlet-name>
+        <servlet-class>servlets.CreateUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>servlets.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>servlets.LogOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>servlets.DeleteUser</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>AjouterLike</servlet-name>
+        <servlet-class>servlets.AjouterLike</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjouterMusique</servlet-name>
+        <servlet-class>servlets.AjouterMusique</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Dislike</servlet-name>
+        <servlet-class>servlets.Dislike</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListMusique</servlet-name>
+        <servlet-class>servlets.ListMusique</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SupprimerLike</servlet-name>
+        <servlet-class>servlets.SupprimerLike</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>SupprimerMusique</servlet-name>
+        <servlet-class>servlets.SupprimerMusique</servlet-class>
+    </servlet>
+    
+	
+     
+	<servlet-mapping> 
+		<servlet-name>Test</servlet-name> 
+		<url-pattern>/Test</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>CreateUser</servlet-name> 
+		<url-pattern>/CreateUser</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>Login</servlet-name> 
+		<url-pattern>/Login</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>LogOut</servlet-name> 
+		<url-pattern>/LogOut</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>DeleteUser</servlet-name> 
+		<url-pattern>/DeleteUser</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>AjouterLike</servlet-name> 
+		<url-pattern>/AjouterLike</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>AjouterMusique</servlet-name> 
+		<url-pattern>/AjouterMusique</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>Dislike</servlet-name> 
+		<url-pattern>/Dislike</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>ListMusique</servlet-name> 
+		<url-pattern>/ListMusique</url-pattern> 
+		</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>SupprimerLike</servlet-name> 
+		<url-pattern>/SupprimerLike</url-pattern> 
+		</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>SupprimerMusique</servlet-name> 
+		<url-pattern>/SupprimerMusique</url-pattern> 
+		</servlet-mapping>
+	
+	
+	<filter>
+  	<filter-name>CorsFilter</filter-name>
+  	<filter-class>filtre.CORSFilter</filter-class>
+  </filter>
+  <filter-mapping>
+ 	<filter-name>CorsFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+	
+</web-app>
