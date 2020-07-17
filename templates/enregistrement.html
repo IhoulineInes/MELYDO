@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Ouvrir une session </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ url_for('static', filename="css/login.css") }}" />
+
+	</head>
+	<body style="background: url({{ url_for('static', filename="img/bg.jpg") }});background-repeat: no-repeat;height: 100%; background-size: cover;background-position: centerc">
+		<div class="text-center modal-dialog">
+			<div class="col-sm-8 connexion">
+				<div class="modal-content">
+					<div class="col-12 logo-img">
+						<img class="mb-4" src="{{ url_for('static', filename="img/musique.jpg") }}">
+					</div>
+					<h1 class="h3 mb-3">Bienvenue sur Melydo !</h1>
+
+					<form class="form-signin" action="inscription/new/user" method="post">
+                         {% if erreur_mdp %}
+                            <div class="alert alert-danger" role="alert">
+                              Echec d'inscription ! Veuillez recommencer... :)
+                            </div>
+                        {% endif %}
+						<div class="form-group">
+							<label for="login" class="sr-only">Login</label>
+							<input class='form-control' type="text" name="login" id="login" placeholder="Login" required/>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="sr-only">Email</label>
+							<input class='form-control' type="mail" name="email" id="email" placeholder="e-mail"required/>
+						</div>
+
+                        <div class="form-group">
+                            <select name="pref[]" class="form-control" id="exampleFormControlSelect1" multiple>
+                              <option>Blues</option>
+                              <option>Classique</option>
+                              <option>Country</option>
+                              <option>Disco</option>
+                              <option>HipHop</option>
+                              <option>Jazz</option>
+                              <option>Metal</option>
+                              <option>Pop</option>
+                              <option>Reggae</option>
+                            </select>
+                        </div>
+
+						<div class="form-group">
+							<label for="mdp" class="sr-only">Mot de Passe</label>
+							<input class='form-control' type="password" name="mdp" id="mdp" placeholder="Mot de Passe" required minlength="8" pattern="([a-z]*[A-Z]*[0-9]*(\W)*)*" title="Au moins une majuscule, une minuscule, un chiffre et un caractere special"required />
+						</div>
+
+						<div class="form-group">
+							<label for="mdpbis" class="sr-only">Retapez</label>
+							<input class='form-control' type="password" name="mdpbis" id="mdpbis" placeholder="Retapez le mot de passe" required />
+						</div>
+						<div>
+							<button class='valide' onclick='accueil.html' type="submit">Enregistrer</button>
+						</div>
+					</form>
+					<div class="col-12 liens">
+						<a href="/login">Deja inscrit ?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+

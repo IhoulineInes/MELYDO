@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Accueil </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename="css/accueil.css") }}" />
+
+	</head>
+	<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<div class="logo-img">
+            <img class="mb-4" src="{{ url_for('static', filename="img/musique.jpg") }}">
+
+	    </div>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    	<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    	<ul class="navbar-nav ">
+	      		<li class="nav-item active">
+	        		<a class="nav-link" href="#">Accueil </span></a>
+	      		</li>
+
+	    	</ul>
+
+	    	<form class="rech form-inline my-2 my-lg-0">
+	    		<label for="recherche" class="sr-only"> Recherche </label>
+	      		<input class="form-control mr-sm-2" type="search" placeholder="Que recherchez vous ?" size="50"/>
+	      		<button class="valide" type="submit"> C'est parti !</button>
+	    	</form>
+	    	<button class=" logout " type="button" href="ouvrirsession.html" style="position: absolute"> Deconnexion </button>
+	  	</div>
+	</nav>
+
+
+
+	<div class="sidenav">
+	  	<div style="font-size: 1.4em">Mon Profil</div>
+        <div>
+            Bonjour<span> {{ session['login'] }}</span>
+        </div>
+	  	<div>Mes Likes
+	  		<span>nbLike</span>
+	  	</div>
+	  	<div>Mes écoutes
+	  		<span>200</span>
+	  	</div>
+			<div> <a href="proposition.html">Proposition</a>
+			</div>
+			<div>Mon compte
+			</div>
+
+
+	</div>
+
+
+<div class="liste_musique">
+	<!-- Team -->
+	<section id="team" class="pb-5">
+	    <div class="container">
+	        <h1>Melydo</h1> </br></br>
+	        <div class="row">
+	            <!-- Team member -->
+	            <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" >
+	                    <div class="mainflip flip-0">
+	                        <div class="frontside">
+	                            <div class="card">
+	                                <div class="card-body text-center">
+	                                    <p><img class=" img-fluid" src="image/blues.jpg" alt="card image"></p>
+
+	                                    <a href="image/blues.jpg" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+	                                </div>
+	                            </div>
+	                        </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <a class="card-title" href="/musique">Blues</a>
+                                    </div>
+                                </div>
+                            </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <!-- ./Team member -->
+	            <!-- Team member -->
+	            <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+	                    <div class="mainflip">
+	                        <div class="frontside">
+	                            <div class="card">
+	                                <div class="card-body text-center">
+	                                    <p><img class=" img-fluid" src="image/classique.jpg" alt="card image"></p>
+	                                    <a href="connexion.html" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="backside">
+	                            <div class="card">
+	                                <div class="card-body text-center mt-4">
+	                                    <h4 class="card-title">Classique</h4>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <!-- ./Team member -->
+	            <!-- Team member -->
+
+
+	            <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+	                    <div class="mainflip">
+	                        <div class="frontside">
+	                            <div class="card">
+	                                <div class="card-body text-center">
+	                                    <p><img class=" img-fluid" src="image/country.jpg" alt="card image"></p>
+	                                    <a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="backside">
+	                            <div class="card">
+	                                <div class="card-body text-center mt-4">
+	                                    <h4 class="card-title">Country</h4>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+						</div>
+
+	            <!-- ./Team member -->
+	            <!-- Team member -->
+							<div class="row">
+	            <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+	                    <div class="mainflip">
+	                        <div class="frontside">
+	                            <div class="card">
+	                                <div class="card-body text-center">
+	                                    <p><img class=" img-fluid" src="image/disco.jpeg" alt="card image"></p>
+	                                    <a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="backside">
+	                            <div class="card">
+	                                <div class="card-body text-center mt-4">
+	                                    <h4 class="card-title">Disco</h4>
+
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <!-- ./Team member -->
+	            <!-- Team member -->
+	            <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+	                    <div class="mainflip">
+	                        <div class="frontside">
+	                            <div class="card">
+	                                <div class="card-body text-center">
+	                                    <p><img class=" img-fluid" src=" " alt="card image"></p>
+	                                    <a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="backside">
+	                            <div class="card">
+	                                <div class="card-body text-center mt-4">
+	                                    <h4 class="card-title">hip Hop</h4>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+
+
+	            <!-- ./Team member -->
+	            <!-- Team member -->
+
+	            <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+	                    <div class="mainflip">
+	                        <div class="frontside">
+	                            <div class="card">
+	                                <div class="card-body text-center">
+	                                    <p><img class=" img-fluid" src="image/jazz1.jpg" alt="card image"></p>
+	                                    <a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="backside">
+	                            <div class="card">
+	                                <div class="card-body text-center mt-4">
+	                                    <h4 class="card-title">Jazz</h4>
+
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+					</div>
+
+	            <!-- ./Team member -->
+
+
+					<div class="row">
+					<div class="col-xs-12 col-sm-3 col-md-3">
+							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+									<div class="mainflip">
+											<div class="frontside">
+													<div class="card">
+															<div class="card-body text-center">
+																	<p><img class=" img-fluid" src="image/metal.jpg" alt="card image"></p>
+																	<a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+															</div>
+													</div>
+											</div>
+											<div class="backside">
+													<div class="card">
+															<div class="card-body text-center mt-4">
+																	<h4 class="card-title">Metal</h4>
+
+															</div>
+													</div>
+											</div>
+									</div>
+							</div>
+					</div>
+					<!-- ./Team member -->
+					<!-- Team member -->
+					<div class="col-xs-12 col-sm-3 col-md-3">
+							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+									<div class="mainflip">
+											<div class="frontside">
+													<div class="card">
+															<div class="card-body text-center">
+																	<p><img class=" img-fluid" src=" " alt="card image"></p>
+																	<a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+															</div>
+													</div>
+											</div>
+											<div class="backside">
+													<div class="card">
+															<div class="card-body text-center mt-4">
+																	<h4 class="card-title">pop</h4>
+															</div>
+													</div>
+											</div>
+									</div>
+							</div>
+					</div>
+					<!-- ./Team member -->
+					<!-- Team member -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+									<div class="mainflip">
+											<div class="frontside">
+													<div class="card">
+															<div class="card-body text-center">
+																	<p><img class=" img-fluid" src="image/reggae.jpg" alt="card image"></p>
+																	<a href=" " class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+															</div>
+													</div>
+											</div>
+											<div class="backside">
+													<div class="card">
+															<div class="card-body text-center mt-4">
+																	<h4 class="card-title">Reggae</h4>
+
+															</div>
+													</div>
+											</div>
+									</div>
+							</div>
+					</div>
+					</div>
+					<!-- ./Team member -->
+
+					</div>
+
+	    </div>
+	</section>
+						</div>
+		</li>
+	</ul>
+    </div>
+	</body>
+</html>

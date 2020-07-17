@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Ouvrir une session </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename="css/login.css") }}" />
+
+	</head>
+
+	<body style="background: url({{ url_for('static', filename="img/bg.jpg") }});background-repeat: no-repeat;height: 100%; background-size: cover;background-position: centerc">
+
+		<div class="text-center modal-dialog">
+			<div class="col-sm-8 connexion">
+				<div class="modal-content">
+					<div class="col-12 logo-img">
+						<img class="mb-4" src="{{ url_for('static', filename="img/musique.jpg") }}">
+					</div>
+					<h1 class="h3 mb-3">Connecte toi à Melydo !</h1>
+					<form class='form-signin' action="/login" method="POST">
+                        {% if erreur_connexion %}
+                            <div class="alert alert-danger" role="alert">
+                              Echec de connexion ! Veuillez recommencer... :)
+                            </div>
+                        {% endif %}
+                        {% if compte_cree %}
+                            <div class="alert alert-success" role="alert">
+                              Houpy, votre compte à bien été crée, connectez vous !
+                            </div>
+                        {% endif %}
+
+						<div class="form-group">
+							<label for='login' class="sr-only">Login</label>
+							<input class='form-control' type="text" name="login" id="login" placeholder="Login" required />
+						</div>
+
+						<div class="form-group">
+							<label for='mdp' class="sr-only">Mot de Passe</label>
+							<input class='form-control' type="password" name="mdp" id="mdp" placeholder="Mot de passe" required />
+						</div>
+						<div>
+
+							<button class='valide' type="submit" onclick="window.location.href = 'liste_musique.html';"> Connexion</button>
+						</div>
+					</form>
+					<div class="col-12 liens">
+						<a href="#">Mot de passe perdu</a>
+						<p>
+						<a href="/">Pas encore inscrit ?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

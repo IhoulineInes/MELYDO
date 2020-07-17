@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Accueil </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+		<link rel="stylesheet" href="{{ url_for('static', filename="css/accueil.css") }}" />
+	</head>
+	<body>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+            <div class="logo-img">
+	    	    <img class="mb-4" src="{{ url_for('static', filename="img/musique.jpg") }}">
+	        </div>
+          <!-- Links -->
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="nav-link active" href="/parametre"> Hello {{ session['login'] }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/musique">Melydo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/musique/mesLikes">Mes Likes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/musique/propositions">Mes propositions</a>
+            </li>
+            <li class="nav-item mr-sm-2">
+              <a class="nav-link active" style="margin-left: 550%" href="/logout">Deconnexion</a>
+            </li>
+          </ul>
+
+        </nav>
+        {% if downloads == 'KO' %}
+            <div class="alert alert-danger" role="alert">
+                Echec de téléchargement ! Veuillez recommencer... :)
+            </div>
+        {% endif %}
+        {% if downloads == 'KO' %}
+            <div class="alert alert-success" role="alert">
+                Houpy, ton téléchargement a réalisé avec succès !
+            </div>
+        {% endif %}
+
+
+
+
+<div class="liste_musique" style="margin-left: 5%; margin-top: 2%">
+	<!-- Team -->
+	<section id="team" class="pb-2">
+	    <div class="container">
+            {%for genre in musiques%}
+                <h3>{{ genre }}</h3>
+	        <div class="row">
+	            <!-- Team member -->
+                {% for musique in musiques[genre][0:30] %}
+                <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" >
+                    <div class="image-flip" >
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class="mb-4" src="{{ url_for('static', filename="img/"~genre~".jpg") }}" alt="card image"></p>
+
+                                        <a href="image/blues.jpg" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">écouter la musique</h4>
+                                        <figure>
+                                          <figcaption>{{musique.split("/")[2].split(".wav")[0]}}:</figcaption>
+                                          <audio controls type="audio/mp3" id="{{ musique }}">
+                                              <source src={{ url_for('static', filename= musique) }}>
+                                              Your browser does not support the audio element.
+                                          </audio>
+                                        </figure>
+                                        <a class="nav-link" href="/musique/like/{{musique.split("/")[2].split(".")[0]}}/{{musique.split("/")[2].split(".wav")[0]}}">Like</a>
+                                        <a class="nav-link musique_choisi" href="{{ url_for('static', filename= musique) }}" download>Télécharger</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+	                </div>
+	            </div>
+	            <!-- ./Team member -->
+                  {% endfor %}
+            </div>
+        {% endfor %}
+        </div>
+
+	</section>
+						</div>
+		</li>
+	</ul>
+    </div>
+
+            <form id ="form_telechargement" action="/musique/downloads" method="POST">
+              <input id ="url_telechargement" type="hidden" name="url_sound">
+            </form>
+
+    <form id="form_ecoute" action="musique/add_ecoute" method="POST">
+      <input type="hidden" name="musique_path" id="musique_path">
+    </form>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $(".musique_choisi").click(function () {
+                var nom_musique = $(this).attr("href");
+                $("#url_telechargement").val(nom_musique);
+                $("#form_telechargement").submit();
+            });
+
+
+        });
+
+    </script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+        $('audio').each(function() {
+            var id = $(this).attr('id');
+
+            $(this).one("playing", function() {
+                $("#musique_path").val(id);
+              $.ajax({type: 'post',
+                    url: 'musique/add_ecoute',
+                    data: $("#form_ecoute").serialize(),
+                    success: function () {
+
+                    }})
+            });
+        });
+    });
+    </script>
+
+	</body>
+</html>

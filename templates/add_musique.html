@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> add_musique </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ url_for('static', filename="css/login.css") }}" />
+
+	</head>
+	<body>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+
+          <!-- Links -->
+          <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link active" href="/parametre"> Hello {{ session['login'] }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/musique">Melydo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/musique/mesLikes">Mes Likes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/musique/propositions">Mes propositions</a>
+            </li>
+            <li class="nav-item mr-sm-2">
+              <a class="nav-link active" style="margin-left: 550%" href="/logout">Deconnexion</a>
+            </li>
+          </ul>
+        </nav>
+
+
+
+		<div class="text-center modal-dialog">
+			<div class="col-sm-8 connexion">
+				<div class="modal-content">
+					<div class="col-12 logo-img">
+						<img class="mb-4" src="{{ url_for('static', filename="img/musique.jpg") }}">
+					</div>
+					<h1 class="h3 mb-3">Ajouter une musique</h1>
+
+                       <form enctype = "multipart/form-data" action = "/musique/add_musique" method = "post">
+                           {% if erreur_mdp %}
+                                <div class="alert alert-danger" role="alert">
+                                  Mot de passe différent ! Veuillez recommencer... :)
+                                </div>
+                            {% endif %}
+                            {% if erreur_mdp %}
+                                <div class="alert alert-success" role="alert">
+                                  Les modifications ont été réalisé !
+                                </div>
+                             {% endif %}
+
+                           <div class="form-group">
+                               <select name="dossier" class="form-control" id="exampleFormControlSelect1">
+                                   <option>Blues</option>
+                                   <option>Classique</option>
+                                   <option>Country</option>
+                                   <option>Disco</option>
+                                   <option>HipHop</option>
+                                   <option>Jazz</option>
+                                   <option>Metal</option>
+                                   <option>Pop</option>
+                                   <option>Reggae</option>
+                               </select>
+                           </div>
+                           <p><input type = "file" name = "filename" /></p>
+                           <p><input type = "submit" value = "Upload" /></p>
+                        </form>
+
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
