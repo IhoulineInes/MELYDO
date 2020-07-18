@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, session, flash
 from bd import lien_bd
 import reco_data
+import reco_proposition
 import os
 from functools import wraps
 from werkzeug.utils import secure_filename
@@ -245,10 +246,11 @@ def add_ecoute():
 def propositions():
     idd = int(session.get('id'))
     liste_path =[]
-    if(lien_bd.nb_ecoute(idd)<15):
+    print(lien_bd.nb_ecoute(idd))
+    if(lien_bd.nb_ecoute(idd)<10):
         song = reco_data.liste_musique(idd)
     else:
-        song = reco_data.proposition(idd)
+        song = reco_proposition.proposition(idd)
     for i in song:
         liste_path.append(lien_bd.getPath(i))
     return render_template('proposition.html', musiques=liste_path)

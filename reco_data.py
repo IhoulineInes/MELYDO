@@ -80,7 +80,7 @@ def proposition(id):
 	print(user_songs)
 	user_songs_ids = list(user_songs['id_musique'])
 
-	return True
+
 	users_scores = {}
 
 

@@ -262,16 +262,20 @@ def users_songs(id):
     print(id)
     id=int(id)
     connexion = create_session()
-    requete = "SELECT e.id_ecoute, e.id_musique,e.id_user,d.id_download,l.id FROM `ecoutes` e LEFT JOIN `downloads` d on d.id_musique=e.id_musique and d.id_user=e.id_user LEFT JOIN `likes` l on l.id_musique=e.id_musique and l.id_user=e.id_user where e.id_user=%s" %id
+    requete = "select `id_musique`, `id_user`, `nb_ecoute` FROM `ecoutes` WHERE `id_user` = %s"%id
     print(requete)
     res = pd.read_sql(requete, con=connexion, index_col=None)
     print(res)
     return (res)
 
+
+
+
 def all_user_songs(id):
     print("users_songs")
     connexion = create_session()
-    requete = "select * FROM `ecoutes` WHERE `id_musique` in (SELECT id_musique from ecoutes where id_user = %s)"%(id)
+    requete = "SELECT `id_musique`, `id_user`, `nb_ecoute` FROM `ecoutes` WHERE `id_musique` in (SELECT id_musique from ecoutes where id_user = % s)"%id
+
     #requete = "select `id_musique`,`id_user` FROM `ecoutes` WHERE `id_user` = %s union all SELECT `id_musique`, `id_user` FROM `downloads` WHERE `id_musique` in (SELECT `id_musique` FROM `ecoutes` WHERE `id_user` = %s) union all SELECT `id_musique`,`id_user` FROM `likes` WHERE `id_musique` in (SELECT `id_musique` FROM `ecoutes` WHERE `id_user` = %s)"%(id,id,id)
 
     print(requete)
