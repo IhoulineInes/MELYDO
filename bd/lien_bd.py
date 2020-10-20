@@ -67,11 +67,9 @@ def dontLike(id_user, id_musique):
         connexion = create_session()
         print(">>")
         requete = "DELETE FROM `likes` WHERE id_user=%s and id_musique=%s " %(id_user,id_musique)
-        print("OOOKKK")
-        print(requete)
+
         pd.read_sql(requete, con=connexion,index_col=None)
-        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<")
-        print("requete"+requete)
+
         return "OK"
     except Exception as e:
         return "KO"
@@ -80,9 +78,9 @@ def add_like(idd, id_musique):
     try:
         connexion = create_session()
         requete = {"id_musique":id_musique,"id_user":idd}
-        print(requete)
+
         new = pd.DataFrame(requete,index=[None])
-        print(new)
+
         new.to_sql('likes', connexion, index=False, if_exists="append")
         return "OK"
     except Exception as e :
@@ -92,9 +90,9 @@ def getNbLike():
     print("getNbLike")
     connexion = create_session()
     requete = "Select id_user, nb_ecoute FROM ecoutes "
-    print(requete)
+
     nb_like = pd.read_sql(requete, con=connexion, index_col=None)
-    print(nb_like)
+
     return ()
 #--------------------------MUSIQUE----------------------
 def getPath(titre):
@@ -108,9 +106,9 @@ def getIdMusique_titre(titre):
     titre = "'"+titre+"'"
     connexion = create_session()
     requete = "SELECT id from `musique` WHERE nom_musique=%s " %titre
-    print(requete)
+
     id = pd.read_sql(requete, con=connexion,index_col=None)
-    print(id)
+
     return id['id'][0]
 
 def getIdMusique_path(path):
@@ -127,9 +125,14 @@ def getPath(id_musique):
     requete = "SELECT path from `musique` WHERE id=%s " %id_musique
     print(requete)
     id = pd.read_sql(requete, con=connexion)
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    print(id)
     return id['path'][0]
+
+def liste_genre():
+    __PATH__ = str(os.getcwd()).replace('\\', '/') + '/static/sound/'
+
+    return os.listdir(__PATH__)
+
+
 
 def liste_musique():
 
@@ -146,13 +149,24 @@ def liste_musique():
 
     return dict_sound_par_genre
 
+def liste_genre_musique(genre):
+
+    __PATH__ = str(os.getcwd()).replace('\\', '/')+'/static/sound/'
+
+    liste_musique = []
+    open_dossier = os.listdir(__PATH__+genre)
+    for sound in open_dossier:
+        liste_musique.append("sound/"+genre+'/'+sound)
+
+    return liste_musique
+
 ###########
 def musique_by_id(id_musique):
 
     connexion = create_session()
     requete = "SELECT path date FROM musique WHERE id = '%s' " % (id_musique)
     path = pd.read_sql(requete, con=connexion, index_col=None)
-    print(id['date'][0])
+
     return path
 ############
 
@@ -161,29 +175,24 @@ def get_nb_ecoute(idd,id_musique):
     print("get_nb_ecoute")
     connexion = create_session()
     requete = "Select nb_ecoute FROM ecoutes where `id_musique`=%s and `id_user` =%s "%(id_musique,idd)
-    print(requete)
+
     nb_ecoute = pd.read_sql(requete,con=connexion, index_col=None)
-    print(nb_ecoute)
+
     return (int(nb_ecoute['nb_ecoute'][0]))
 
 def nb_ecoute(idd):
     print("get_nb_ecoute")
     connexion = create_session()
     requete = "Select nb_ecoute FROM ecoutes where id_user=%s " % idd
-    print(requete)
     nb_ecoute = pd.read_sql(requete, con=connexion, index_col=None)
-    print(nb_ecoute)
     return (int(nb_ecoute['nb_ecoute'][0]))
 
 
 def ecouteExist(path,idd):
-    print("ecouteExist")
     connexion = create_session()
     path = "'"+path+"'"
     requete = "SELECT count(*) FROM ecoutes e INNER JOIN musique m ON m.id = e.id_musique where m.path = %s and e.id_user=%s" %(path,idd)
-    print(requete)
     id = pd.read_sql(requete, con=connexion, index_col=None)
-    print(id)
     if id.empty:
         return False
 
@@ -191,12 +200,9 @@ def ecouteExist(path,idd):
 
 
 def listIdMusique_ecoute(idd):
-    print("ecouteExist")
     connexion = create_session()
     requete = "SELECT `id_musique` FROM `ecoutes` WHERE `id_user`=%s" %(idd)
-    print(requete)
     id = pd.read_sql(requete, con=connexion, index_col=None)
-    print(id['id_musique'])
     if id.empty:
         return []
 
@@ -210,9 +216,9 @@ def add_new_ecoute(idd, id_musique):
 
         connexion = create_session()
         requete = "INSERT INTO `ecoutes`(`id_musique`, `id_user`) VALUES (%s,%s)" % (id_musique, idd)
-        print(requete)
+
         add = pd.read_sql(requete, con=connexion, index_col=None)
-        print(add)
+
 
         return "OK"
     except Exception as e :
@@ -222,9 +228,9 @@ def add_ecoute(idd, id_musique):
     print("add_ecoute")
     connexion = create_session()
     nb = get_nb_ecoute(idd, id_musique)+1
-    print(nb)
+
     requete = "UPDATE `ecoutes` SET `nb_ecoute`=%s where `id_musique`=%s and `id_user`=%s" %(nb,id_musique,idd)
-    print(requete)
+
     nb_ecoute = pd.read_sql(requete, con=connexion, index_col=None)
 
 
@@ -232,9 +238,6 @@ def add_ecoute(idd, id_musique):
 
 #-------------------------------TELECHARGEMENT------------------------
 def add_dow(idd, id_musique):
-    print("ok")
-    print("----------------------------------------------------------------")
-    print("id_musique"+str(id_musique))
     try:
         connexion = create_session()
         requete = {"id_musique":id_musique,"id_user":idd}
@@ -250,22 +253,21 @@ def getNbDw():
     print("getNbLike")
     connexion = create_session()
     requete = "Select id_user, nb_ecoute FROM downloads "
-    print(requete)
+
     nb_like = pd.read_sql(requete, con=connexion, index_col=None)
-    print(nb_like)
+
     return ()
 
 #--------------------------------PROPOSITION--------------------------------------------
 
 def users_songs(id):
     print("users_songs")
-    print(id)
     id=int(id)
     connexion = create_session()
     requete = "select `id_musique`, `id_user`, `nb_ecoute` FROM `ecoutes` WHERE `id_user` = %s"%id
-    print(requete)
+
     res = pd.read_sql(requete, con=connexion, index_col=None)
-    print(res)
+
     return (res)
 
 
@@ -278,7 +280,7 @@ def all_user_songs(id):
 
     #requete = "select `id_musique`,`id_user` FROM `ecoutes` WHERE `id_user` = %s union all SELECT `id_musique`, `id_user` FROM `downloads` WHERE `id_musique` in (SELECT `id_musique` FROM `ecoutes` WHERE `id_user` = %s) union all SELECT `id_musique`,`id_user` FROM `likes` WHERE `id_musique` in (SELECT `id_musique` FROM `ecoutes` WHERE `id_user` = %s)"%(id,id,id)
 
-    print(requete)
+
     res = pd.read_sql(requete, con=connexion, index_col=None)
-    print(res)
+
     return (res)

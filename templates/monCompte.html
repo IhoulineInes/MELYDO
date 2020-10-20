@@ -15,7 +15,7 @@
               <a class="nav-link active" href="/parametre"> Hello {{ session['login'] }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="/musique">Melydo</a>
+              <a class="nav-link " href="/genre">Melydo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/musique/mesLikes">Mes Likes</a>
@@ -44,14 +44,14 @@
 
 
 					<form class="form-signin" action="inscription/new/user" method="post">
-                        {% if erreur_mdp %}
+                        {% if erreur_mdp == False %}
                             <div class="alert alert-danger" role="alert">
                               Mot de passe différent ! Veuillez recommencer... :)
                             </div>
                         {% endif %}
-                        {% if erreur_mdp %}
+                        {% if erreur_mdp == True%}
                             <div class="alert alert-success" role="alert">
-                              Les modifications ont été réalisé !
+                              Les modifications ont été réalisé avec succès !
                             </div>
                         {% endif %}
                         <ul class="list-group list-group-flush">

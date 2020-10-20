@@ -20,7 +20,7 @@
               <a class="nav-link active" href="/parametre"> Hello {{ session['login'] }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="/musique">Melydo</a>
+              <a class="nav-link " href="/genre">Melydo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/musique/mesLikes">Mes Likes</a>
@@ -55,6 +55,7 @@
 	<!-- Team -->
 	<section id="team" class="pb-2">
 	    <div class="container">
+            {% if genre_musique == False %}
             {%for genre in musiques%}
                 <h3>{{ genre }}</h3>
 	        <div class="row">
@@ -98,6 +99,53 @@
                   {% endfor %}
             </div>
         {% endfor %}
+        {% endif %}
+
+
+        {% if genre_musique != False %}
+            <h3>{{ genre_musique }}</h3>
+                        <div class="row">
+	            <!-- Team member -->
+                {% for musique in musiques %}
+                <div class="col-xs-12 col-sm-6 col-md-3">
+	                <div class="image-flip" >
+                    <div class="image-flip" >
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class="mb-4" src="{{ url_for('static', filename="img/"~genre_musique~".jpg") }}" alt="card image"></p>
+
+                                        <a href="image/blues.jpg" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">écouter la musique</h4>
+                                        <figure>
+                                          <figcaption>{{musique.split("/")[2].split(".wav")[0]}}:</figcaption>
+                                          <audio controls type="audio/mp3" id="{{ musique }}">
+                                              <source src={{ url_for('static', filename= musique) }}>
+                                              Your browser does not support the audio element.
+                                          </audio>
+                                        </figure>
+
+                                        <a class="nav-link" href="/musique/like/{{musique.split("/")[1]}}/{{musique.split("/")[2].split(".wav")[0]}}">Like</a>
+                                        <a class="nav-link musique_choisi" href="{{ url_for('static', filename= musique) }}" download>Télécharger</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+	                </div>
+	            </div>
+	            <!-- ./Team member -->
+                  {% endfor %}
+            </div>
+        {% endif %}
         </div>
 
 	</section>

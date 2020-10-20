@@ -50,7 +50,8 @@ def ouvrirsession():
         session['pref'] = str(result.pref[0])
         session['mdp'] = str(result.mdp[0])
 
-        return redirect(url_for('session_new'))
+        #return redirect(url_for('session_new'))
+        return redirect(url_for('list_genre'))
 
     return render_template('ouvrirsession.html')
 
@@ -78,6 +79,7 @@ def logout():
 
 
 @app.route('/inscription/new/user', methods=['GET', 'POST'])
+@is_logged_in
 def new_inscription():
     if request.method == "POST":
         login = request.form['login']
@@ -99,6 +101,7 @@ def new_inscription():
 
 
 @app.route('/modification', methods=['GET', 'POST'])
+@is_logged_in
 def modification_param():
     if request.method == "POST":
         pref = request.form.getlist('pref[]')
@@ -108,20 +111,23 @@ def modification_param():
         print(pref, mdp, mdpbis)
 
         if (mdpbis != mdp):
-            return render_template('monCompte.html', erreur_mdp=True)
+            return render_template('monCompte.html', erreur_mdp=False)
 
         result_inscription = lien_bd.modification_param(mdp, '-'.join(item for item in pref),session.get('id'))
-
+        session['pref'] = str(pref[0])
+        session['mdp'] = str(mdp[0])
         return render_template('monCompte.html', compte_modifier=True)
 
 
 @app.route('/parametre', methods=['GET', 'POST'])
+@is_logged_in
 def monCompte():
     idd = session.get("id")
     return render_template('monCompte.html', id = idd)
 
 
 @app.route('/parametre/modification', methods=['GET', 'POST'])
+@is_logged_in
 def modificationCompte():
     return render_template('modificationCompte.html', modification=True)
 
@@ -131,13 +137,37 @@ def modificationCompte():
 
 
 @app.route('/musique', methods=['GET', 'POST'])
+@is_logged_in
 def session_new():
     print(session)
     musiques = lien_bd.liste_musique()
-    return render_template('liste_musique.html', musiques=musiques)
+    return render_template('liste_musique.html', musiques=musiques,genre_musique=False)
+
+
+@app.route('/genre', methods=['GET', 'POST'])
+@is_logged_in
+def list_genre():
+    print("list_genre")
+    genres = lien_bd.liste_genre()
+    return render_template('liste_genre.html',genres=genres)
+
+
+
+@app.route('/genre/<string:genre>', methods=['GET', 'POST'])
+@is_logged_in
+def list_musique_genre(genre):
+    print("list_musique_genre")
+    musiques = lien_bd.liste_genre_musique(genre)
+    return render_template('liste_musique.html',musiques=musiques,genre_musique=genre)
+
+
+
+
+
 
 
 @app.route('/musique/add_musique', methods=['GET', 'POST'])
+@is_logged_in
 def add_musique():
     UPLOAD_FOLDER = os.getcwd() + '/static/sound/'
     if request.method=='POST':
@@ -147,15 +177,16 @@ def add_musique():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return "Fichier charger"
+            return render_template('add_musique.html',chargement='OK')
 
-    return render_template('add_musique.html')
+    return render_template('add_musique.html',chargement='KO')
 
 
 
 #----------------------------------LIKE---------------------
 
 @app.route('/musique/mesLikes', methods=['GET', 'POST'])
+@is_logged_in
 def mesLikes():
     idd = session.get("id")
     mesLikes = lien_bd.likes(idd)
@@ -165,6 +196,7 @@ def mesLikes():
     return render_template('liste_like.html', musiques=mesLikes['path'])
 
 @app.route('/musique/dont_like/<string:titre>', methods=['GET', 'POST'])
+@is_logged_in
 def dontLike(titre):
     idd = session.get("id")
     id_musique=lien_bd.getIdMusique_titre(titre)
@@ -179,6 +211,7 @@ def dontLike(titre):
 
 
 @app.route('/musique/like/<string:genre>/<string:titre>',methods=['GET','POST'])
+@is_logged_in
 def ajouter_like(genre,titre):
     idd = session.get('id')
     print(titre)
@@ -196,6 +229,7 @@ def ajouter_like(genre,titre):
 
 
 @app.route('/musique/downloads',methods=['GET','POST'])
+@is_logged_in
 def ajouter_telechargement():
     idd = session.get('id')
     path = request.form['url_sound']
@@ -213,6 +247,7 @@ def ajouter_telechargement():
 
 
 @app.route('/telechargement', methods=['GET', 'POST'])
+@is_logged_in
 def telechargement():
         return render_template('telechargement.html')
 
@@ -222,6 +257,7 @@ def telechargement():
 #-------------------------------------------ECOUTE----------
 
 @app.route('/musique/add_ecoute', methods=['POST'])
+@is_logged_in
 def add_ecoute():
     idd = int(session.get('id'))
     path = request.form["musique_path"]
@@ -243,6 +279,7 @@ def add_ecoute():
 
 
 @app.route('/musique/propositions', methods=['GET','POST'])
+@is_logged_in
 def propositions():
     idd = int(session.get('id'))
     liste_path =[]
@@ -257,6 +294,7 @@ def propositions():
 
 
 @app.route('/musique/propositions/downloads',methods=['GET','POST'])
+@is_logged_in
 def ajouter_telechargement_proposition():
     idd = session.get('id')
     path = request.form['url_sound']
